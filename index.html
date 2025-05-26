@@ -1,0 +1,121 @@
+from zipfile import ZipFile
+import os
+
+# Recreate folder structure for the website after reset
+folder_path = "/mnt/data/thahamin_portfolio_site"
+os.makedirs(folder_path, exist_ok=True)
+
+# HTML content for the portfolio website
+html_content = """
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MD TAHAMIN ISLAM - Portfolio</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #0d0d0d;
+      color: #f0f0f0;
+    }
+    header {
+      background-color: #1a1a1a;
+      padding: 2rem;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      color: #4ade80;
+    }
+    section {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+    h2 {
+      color: #38bdf8;
+      border-bottom: 2px solid #4ade80;
+      padding-bottom: 0.5rem;
+    }
+    a {
+      color: #f472b6;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .project {
+      margin-bottom: 2rem;
+    }
+    .footer {
+      text-align: center;
+      padding: 2rem;
+      background-color: #1a1a1a;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>MD TAHAMIN ISLAM (Mahin)</h1>
+    <p>Student | Machine Learning Enthusiast | Web Developer</p>
+  </header>
+
+  <section>
+    <h2>About Me</h2>
+    <p>I am a student of Class 9 (SSC Batch 2027) at Sunup International School and College, Kushtia. I'm passionate about Machine Learning, Python, Web Development (HTML, CSS, JS), and Business. I love learning and sharing knowledge.</p>
+  </section>
+
+  <section>
+    <h2>Research</h2>
+    <p><strong>Thesis Title:</strong> "The Role of Machine Learning in Modern Education and Industry"</p>
+    <p>This paper explores how machine learning is revolutionizing different industries and how students can prepare for an AI-driven future. It also highlights current trends and tools used by developers and researchers.</p>
+    <a href="#">Download Thesis (PDF)</a>
+  </section>
+
+  <section>
+    <h2>Projects</h2>
+    <div class="project">
+      <h3>1. Spam Email Classifier</h3>
+      <p>A basic machine learning project using Python & scikit-learn to classify emails as spam or not.</p>
+      <a href="https://github.com/thahamin/spam-email-classifier" target="_blank">View on GitHub</a>
+    </div>
+    <div class="project">
+      <h3>2. Student Marks Visualizer</h3>
+      <p>Python project using matplotlib to visualize student marks from a CSV file.</p>
+      <a href="https://github.com/thahamin/student-marks-visualizer" target="_blank">View on GitHub</a>
+    </div>
+    <div class="project">
+      <h3>3. Personal Portfolio Website</h3>
+      <p>This very website! Designed using HTML, CSS, and JavaScript to showcase projects and research.</p>
+      <a href="https://github.com/thahamin/portfolio-website" target="_blank">View on GitHub</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>Resume & Contact</h2>
+    <p>Email: <a href="mailto:thahaminislam@gmail.com">thahaminislam@gmail.com</a></p>
+    <p>Phone: 01922523074</p>
+    <p><a href="#">Download Resume (PDF)</a></p>
+  </section>
+
+  <div class="footer">
+    &copy; 2025 MD TAHAMIN ISLAM. Built with passion for ML.
+  </div>
+</body>
+</html>
+"""
+
+# Save HTML to file
+html_path = os.path.join(folder_path, "index.html")
+with open(html_path, "w") as f:
+    f.write(html_content)
+
+# Zip the folder
+zip_path = "/mnt/data/thahamin_portfolio_website.zip"
+with ZipFile(zip_path, "w") as zipf:
+    zipf.write(html_path, arcname="index.html")
+
+zip_path
